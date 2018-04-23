@@ -3,7 +3,11 @@ package com.example.leansupermarket
 class CheckoutCalculator {
     var total = 0
     fun ring(product: String): CheckoutCalculator {
-        total += 100
+        if (product == "Apples") {
+            total += 100
+        } else {
+            total += 75
+        }
         return this
     }
 

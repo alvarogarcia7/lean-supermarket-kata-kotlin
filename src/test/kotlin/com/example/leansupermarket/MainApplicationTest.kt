@@ -19,8 +19,8 @@ class MainApplicationTest {
     fun `Iteration 0 - Acceptance test`() {
         assertThat(CheckoutCalculator()
                 .ring("Apples")
-                .ring("Cherry")
-                .ring("Cherry")
+                .ring("Cherries")
+                .ring("Cherries")
                 .total()).isEqualTo(250)
     }
 
