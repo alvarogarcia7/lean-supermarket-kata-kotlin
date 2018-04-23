@@ -15,4 +15,13 @@ class MainApplicationTest {
         assertThat(CheckoutCalculator().ring("Apples").total()).isEqualTo(100)
     }
 
+    @Test
+    fun `Iteration 0 - Acceptance test`() {
+        assertThat(CheckoutCalculator()
+                .ring("Apples")
+                .ring("Cherry")
+                .ring("Cherry")
+                .total()).isEqualTo(250)
+    }
+
 }
