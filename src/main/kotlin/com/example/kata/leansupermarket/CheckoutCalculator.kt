@@ -2,7 +2,7 @@ package com.example.kata.leansupermarket
 
 import java.io.PrintStream
 
-class CheckoutCalculator(val out: PrintStream, vararg val discount1: (Int, List<String>) -> Int) {
+class CheckoutCalculator(val out: PrintStream, vararg val discounts: (Int, List<String>) -> Int) {
     private val products = mutableListOf<String>()
     fun ring(product: String): CheckoutCalculator {
         this.products.add(product)
@@ -24,7 +24,7 @@ class CheckoutCalculator(val out: PrintStream, vararg val discount1: (Int, List<
             }
         }
 
-        discount1.forEach { total = it.invoke(total, this.products) }
+        discounts.forEach { total = it.invoke(total, this.products) }
         return total
     }
 
