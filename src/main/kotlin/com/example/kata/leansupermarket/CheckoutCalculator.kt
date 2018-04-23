@@ -1,17 +1,24 @@
 package com.example.kata.leansupermarket
 
 class CheckoutCalculator {
-    var total = 0
+    private val products = mutableListOf<String>()
     fun ring(product: String): CheckoutCalculator {
-        if (product == "Apples") {
-            total += 100
-        } else {
-            total += 75
-        }
+        products.add(product)
         return this
     }
 
     fun total(): Int {
+        var total = 0
+        for (product in products) {
+            total += if (product == "Apples") {
+                100
+            } else {
+                75
+            }
+        }
+        if (products.filter { it == "Cherries" }.count() == 2) {
+            total -= 20
+        }
         return total
     }
 
