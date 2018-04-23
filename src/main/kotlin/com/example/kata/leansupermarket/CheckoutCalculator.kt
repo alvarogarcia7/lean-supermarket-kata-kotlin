@@ -13,7 +13,7 @@ class CheckoutCalculator(val out: PrintStream) {
     fun total(): Int {
         var total = 0
         for (product in products) {
-            total += if (product == "Apples") {
+            total += if (isApple(product)) {
                 100
             } else if (product == "Cherries") {
                 75
@@ -31,5 +31,7 @@ class CheckoutCalculator(val out: PrintStream) {
         }
         return total
     }
+
+    private fun isApple(product: String) = product == "Apples" || product == "Mele" || product == "Pommes"
 
 }

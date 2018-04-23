@@ -36,6 +36,15 @@ class MainApplicationTest {
     }
 
     @Test
+    fun `Iteration 3a - Support internationalization for apples`() {
+        assertThat(CheckoutManager()
+                .ring("Apples")
+                .ring("Pommes")
+                .ring("Mele")
+                .total()).isEqualTo(3 * 100)
+    }
+
+    @Test
     fun `Iteration 1 - Acceptance test`() {
         assertThat(CheckoutManager()
                 .ring("Apples")
