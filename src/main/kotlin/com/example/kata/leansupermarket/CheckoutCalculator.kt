@@ -2,7 +2,7 @@ package com.example.kata.leansupermarket
 
 import java.io.PrintStream
 
-class CheckoutCalculator(val out: PrintStream, val r1: (Int, List<String>) -> Int) {
+class CheckoutCalculator(val out: PrintStream, vararg val discount1: (Int, List<String>) -> Int) {
     private val products = mutableListOf<String>()
     fun ring(product: String): CheckoutCalculator {
         this.products.add(product)
@@ -23,10 +23,8 @@ class CheckoutCalculator(val out: PrintStream, val r1: (Int, List<String>) -> In
                 0
             }
         }
-        total = r1(total, this.products)
-        if (products.filter { it == "Bananas" }.count() == 2) {
-            total -= 150
-        }
+
+        discount1.forEach { total = it.invoke(total, this.products) }
         return total
     }
 
@@ -36,14 +34,22 @@ class CheckoutCalculator(val out: PrintStream, val r1: (Int, List<String>) -> In
 
     companion object {
         fun aNew(): CheckoutCalculator {
-            fun r1(total: Int, products: List<String>): Int {
+            fun discount1(total: Int, products: List<String>): Int {
                 var result = total
                 if (products.filter { it == "Cherries" }.count() == 2) {
                     result -= 20
                 }
                 return result
             }
-            return CheckoutCalculator(System.out, ::r1)
+
+            fun discount2(total: Int, products: List<String>): Int {
+                var result = total
+                if (products.filter { it == "Bananas" }.count() == 2) {
+                    result -= 150
+                }
+                return result
+            }
+            return CheckoutCalculator(System.out, ::discount1, ::discount2)
         }
     }
 }

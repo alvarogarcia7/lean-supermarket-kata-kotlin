@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class MainApplicationTest {
+    private val CHERRIES_DISCOUNT = 20
+
     @Test
     fun `test apples`() {
         assertThat(CheckoutManager().ring("Apples").total()).isEqualTo(100)
@@ -16,7 +18,7 @@ class MainApplicationTest {
                 .ring("Apples")
                 .ring("Cherries")
                 .ring("Cherries")
-                .total()).isEqualTo(250 - 20)
+                .total()).isEqualTo(250 - CHERRIES_DISCOUNT)
     }
 
     @Test
@@ -24,7 +26,7 @@ class MainApplicationTest {
         assertThat(CheckoutManager()
                 .ring("Cherries")
                 .ring("Cherries")
-                .total()).isEqualTo(75 + 75 - 20)
+                .total()).isEqualTo(75 + 75 - CHERRIES_DISCOUNT)
     }
 
     @Test
@@ -35,6 +37,7 @@ class MainApplicationTest {
                 .total()).isEqualTo(150 + 150 - 150)
     }
 
+
     @Test
     fun `Iteration 3a - Support internationalization for apples`() {
         assertThat(CheckoutManager()
@@ -42,6 +45,14 @@ class MainApplicationTest {
                 .ring("Pommes")
                 .ring("Mele")
                 .total()).isEqualTo(3 * 100)
+    }
+
+    @Test
+    fun `Multiple promotions apply`() {
+        assertThat(CheckoutManager()
+                .ring("Cherries, Cherries")
+                .ring("Bananas, Bananas")
+                .total()).isEqualTo(75 * 2 - CHERRIES_DISCOUNT + 150 * 2 - 150)
     }
 
     @Test
