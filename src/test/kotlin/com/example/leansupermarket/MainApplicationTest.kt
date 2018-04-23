@@ -16,7 +16,7 @@ class MainApplicationTest {
                 .ring("Apples")
                 .ring("Cherries")
                 .ring("Cherries")
-                .total()).isEqualTo(250 - 30)
+                .total()).isEqualTo(250 - 20)
     }
 
     @Test
@@ -24,7 +24,7 @@ class MainApplicationTest {
         assertThat(CheckoutManager()
                 .ring("Cherries")
                 .ring("Cherries")
-                .total()).isEqualTo(75 + 75 - 30)
+                .total()).isEqualTo(75 + 75 - 20)
     }
 
     @Test
