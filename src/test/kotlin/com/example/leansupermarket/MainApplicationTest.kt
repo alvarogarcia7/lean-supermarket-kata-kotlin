@@ -1,6 +1,7 @@
 package com.example.leansupermarket
 
 import com.example.kata.leansupermarket.main
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class MainApplicationTest {
@@ -8,4 +9,10 @@ class MainApplicationTest {
     fun `make use of the main application`() {
         main(arrayOf("0", "1,", "2"))
     }
+
+    @Test
+    fun `test apples`() {
+        assertThat(CheckoutCalculator().ring("Apples").total()).isEqualTo(100)
+    }
+
 }
