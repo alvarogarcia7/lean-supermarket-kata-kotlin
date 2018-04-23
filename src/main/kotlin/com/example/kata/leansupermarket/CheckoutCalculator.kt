@@ -1,13 +1,12 @@
 package com.example.kata.leansupermarket
 
-class CheckoutCalculator {
+import java.io.PrintStream
+
+class CheckoutCalculator(val out: PrintStream) {
     private val products = mutableListOf<String>()
     fun ring(product: String): CheckoutCalculator {
-        if (product.contains(",")) {
-            product.split(",").forEach { products.add(it.trim()) }
-        } else {
-            products.add(product)
-        }
+        this.products.add(product)
+        out.println(this.total())
         return this
     }
 

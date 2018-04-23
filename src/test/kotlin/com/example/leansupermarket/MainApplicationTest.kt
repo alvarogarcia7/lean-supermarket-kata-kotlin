@@ -1,18 +1,18 @@
 package com.example.leansupermarket
 
-import com.example.kata.leansupermarket.CheckoutCalculator
+import com.example.kata.leansupermarket.CheckoutManager
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class MainApplicationTest {
     @Test
     fun `test apples`() {
-        assertThat(CheckoutCalculator().ring("Apples").total()).isEqualTo(100)
+        assertThat(CheckoutManager().ring("Apples").total()).isEqualTo(100)
     }
 
     @Test
     fun `Iteration 2 - Acceptance test with discount`() {
-        assertThat(CheckoutCalculator()
+        assertThat(CheckoutManager()
                 .ring("Apples")
                 .ring("Cherries")
                 .ring("Cherries")
@@ -21,7 +21,7 @@ class MainApplicationTest {
 
     @Test
     fun `Iteration 1 - Acceptance test`() {
-        assertThat(CheckoutCalculator()
+        assertThat(CheckoutManager()
                 .ring("Apples")
                 .ring("Cherries")
                 .total()).isEqualTo(100 + 75)
@@ -29,7 +29,7 @@ class MainApplicationTest {
 
     @Test
     fun `Iteration 3 - Acceptance test - separate products by commas`() {
-        assertThat(CheckoutCalculator()
+        assertThat(CheckoutManager()
                 .ring("Apples, Cherries, Bananas")
                 .total()).isEqualTo(325)
     }

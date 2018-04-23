@@ -4,17 +4,18 @@ import java.util.*
 
 fun main(args: Array<String>) {
     val reader = Scanner(System.`in`)
-    checkout(reader)
+    Orchestrator(reader).checkout()
 }
 
-private fun checkout(reader: Scanner) {
-    val calculator = CheckoutCalculator()
-    while (true) {
-        val nextLine = reader.nextLine()
-        if (nextLine.isEmpty()) {
-            break
+class Orchestrator(val reader: Scanner) {
+    fun checkout() {
+        val manager = CheckoutManager()
+        while (true) {
+            val nextLine = reader.nextLine()
+            if (nextLine.isEmpty()) {
+                break
+            }
+            manager.ring(nextLine)
         }
-        calculator.ring(nextLine)
-        println(calculator.total())
     }
 }
