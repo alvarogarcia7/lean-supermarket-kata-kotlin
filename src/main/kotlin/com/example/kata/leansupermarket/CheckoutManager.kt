@@ -14,4 +14,5 @@ class CheckoutManager(private val calculator: CheckoutCalculator = CheckoutCalcu
     fun total(): Int {
         return calculator.total()
     }
+
 }
