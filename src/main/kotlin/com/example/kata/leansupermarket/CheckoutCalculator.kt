@@ -61,7 +61,7 @@ class CheckoutCalculator(val out: PrintStream, vararg val discounts: (Int, List<
             fun discountMele(total: Int, products: List<String>): Int {
                 var result = total
                 if (products.filter { it == "Mele" }.count() == 2) {
-                    result -= 50
+                    result -= 100
                 }
                 return result
             }

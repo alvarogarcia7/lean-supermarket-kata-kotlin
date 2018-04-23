@@ -55,10 +55,17 @@ class MainApplicationTest {
                 .ring("Pommes").equalTo(300)
                 .ring("Apples").equalTo(400)
                 .ring("Pommes").equalTo(400)
-                .ring("Mele").equalTo(450)
-                .ring("Cherries").equalTo(525)
-                .ring("Cherries").equalTo(580)
-                .total()).isEqualTo(580)
+                .ring("Mele").equalTo(400)
+                .ring("Cherries").equalTo(475)
+                .ring("Cherries").equalTo(530)
+                .total()).isEqualTo(530)
+    }
+
+    @Test
+    fun `Iteration 5a - Support multiple discounts in CSV format`() {
+        assertThat(CheckoutManager()
+                .ring("Mele, Pommes, Pommes, Apples, Pommes, Mele, Cherries, Cherries, Bananas").equalTo(680)
+                .total()).isEqualTo(680)
     }
 
     @Test
