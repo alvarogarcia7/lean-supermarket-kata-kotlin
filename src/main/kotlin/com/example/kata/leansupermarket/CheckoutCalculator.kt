@@ -29,10 +29,10 @@ class CheckoutCalculator(val out: PrintStream, vararg val discounts: (Int, List<
     }
 
 
-    private fun isApple(product: String) = product == "Apples" || product == "Mele" || product == "Pommes"
 
 
     companion object {
+        fun isApple(product: String) = product == "Apples" || product == "Mele" || product == "Pommes"
         fun aNew(): CheckoutCalculator {
             fun discount1(total: Int, products: List<String>): Int {
                 var result = total
@@ -61,11 +61,19 @@ class CheckoutCalculator(val out: PrintStream, vararg val discounts: (Int, List<
             fun discountMele(total: Int, products: List<String>): Int {
                 var result = total
                 if (products.filter { it == "Mele" }.count() == 2) {
+                    result -= 50
+                }
+                return result
+            }
+
+            fun discount4apples(total: Int, products: List<String>): Int {
+                var result = total
+                if (products.filter { isApple(it) }.count() == 4) {
                     result -= 100
                 }
                 return result
             }
-            return CheckoutCalculator(System.out, ::discount1, ::discount2, ::discountPommes, ::discountMele)
+            return CheckoutCalculator(System.out, ::discount1, ::discount2, ::discountPommes, ::discountMele, ::discount4apples)
         }
     }
 }
