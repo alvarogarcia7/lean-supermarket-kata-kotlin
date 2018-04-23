@@ -18,6 +18,8 @@ fun main(args: Array<String>) {
 
 private fun checkout(lines: List<String>) {
     val calculator = CheckoutCalculator()
-    lines.forEach { calculator.ring(it) }
-    println(calculator.total())
+    lines.forEach {
+        calculator.ring(it)
+        println(calculator.total())
+    }
 }
