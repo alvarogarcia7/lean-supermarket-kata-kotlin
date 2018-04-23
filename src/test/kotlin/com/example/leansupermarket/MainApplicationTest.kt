@@ -27,4 +27,11 @@ class MainApplicationTest {
                 .total()).isEqualTo(100 + 75)
     }
 
+    @Test
+    fun `Iteration 3 - Acceptance test - separate products by commas`() {
+        assertThat(CheckoutCalculator()
+                .ring("Apples, Cherries, Bananas")
+                .total()).isEqualTo(325)
+    }
+
 }
