@@ -54,16 +54,16 @@ class MainApplicationTest {
                 .ring("Pommes").equalTo(200)
                 .ring("Pommes").equalTo(300)
                 .ring("Apples").equalTo(300)
-                .ring("Pommes").equalTo(400)
-                .ring("Mele").equalTo(450)
-                .ring("Cherries").equalTo(525)
-                .ring("Cherries").equalTo(580))
+                .ring("Pommes").equalTo(200)
+                .ring("Mele").equalTo(300)
+                .ring("Cherries").equalTo(375)
+                .ring("Cherries").equalTo(999))
     }
 
     @Test
     fun `Iteration 5a - Support multiple discounts in CSV format`() {
         assertThat(CheckoutManager()
-                .ring("Mele, Pommes, Pommes, Apples, Pommes, Mele, Cherries, Cherries, Bananas").equalTo(730)
+                .ring("Mele, Pommes, Pommes, Apples, Pommes, Mele, Cherries, Cherries, Bananas").equalTo(200)
         )
     }
 
@@ -72,6 +72,22 @@ class MainApplicationTest {
         assertThat(CheckoutManager()
                 .ring("Mele, Pommes, Pommes, Apples").equalTo(400 - 100)
         )
+    }
+
+    @Test
+    fun `Iteration 6 - 2GBP off when 5 pieces of fruit`() {
+        assertThat(CheckoutManager()
+                .ring("Mele, Pommes, Cherries, Cherries, Bananas").equalTo(100 * 2 + 75 * 2 - 20 + 150 - 200)
+        )
+    }
+
+    @Test
+    fun `Iteration 6 - All of them`() {
+        assertThat(CheckoutManager()
+                .ring("Mele, Pommes, Pommes, Mele").equalTo(250)
+                .ring("Bananas").equalTo(200))
+        assertThat(CheckoutManager()
+                .ring("Mele, Pommes, Pommes, Apples, Mele").equalTo(150))
     }
 
     @Test
