@@ -1,6 +1,6 @@
 package com.example.kata.leansupermarket
 
-class CheckoutManager(private val calculator: CheckoutCalculator = CheckoutCalculator(System.out)) {
+class CheckoutManager(private val calculator: CheckoutCalculator = CheckoutCalculator.aNew()) {
     fun ring(nextLine: String): CheckoutManager {
         val product = nextLine
         if (product.contains(",")) {
