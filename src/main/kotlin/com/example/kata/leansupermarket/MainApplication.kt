@@ -4,22 +4,17 @@ import java.util.*
 
 fun main(args: Array<String>) {
     val reader = Scanner(System.`in`)
-    var lines = mutableListOf<String>()
+    checkout(reader)
+}
+
+private fun checkout(reader: Scanner) {
+    val calculator = CheckoutCalculator()
     while (true) {
         val nextLine = reader.nextLine()
         if (nextLine.isEmpty()) {
             break
-        } else {
-            lines.add(nextLine)
         }
-    }
-    checkout(lines)
-}
-
-private fun checkout(lines: List<String>) {
-    val calculator = CheckoutCalculator()
-    lines.forEach {
-        calculator.ring(it)
+        calculator.ring(nextLine)
         println(calculator.total())
     }
 }

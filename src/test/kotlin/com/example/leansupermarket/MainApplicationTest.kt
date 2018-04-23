@@ -11,12 +11,20 @@ class MainApplicationTest {
     }
 
     @Test
-    fun `Iteration 1 - Acceptance test`() {
+    fun `Iteration 2 - Acceptance test with discount`() {
         assertThat(CheckoutCalculator()
                 .ring("Apples")
                 .ring("Cherries")
                 .ring("Cherries")
                 .total()).isEqualTo(250 - 20)
+    }
+
+    @Test
+    fun `Iteration 1 - Acceptance test`() {
+        assertThat(CheckoutCalculator()
+                .ring("Apples")
+                .ring("Cherries")
+                .total()).isEqualTo(100 + 75)
     }
 
 }
