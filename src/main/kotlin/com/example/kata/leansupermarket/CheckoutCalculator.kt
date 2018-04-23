@@ -24,7 +24,7 @@ class CheckoutCalculator(val out: PrintStream) {
             }
         }
         if (products.filter { it == "Cherries" }.count() == 2) {
-            total -= 20
+            total -= 30
         }
         return total
     }

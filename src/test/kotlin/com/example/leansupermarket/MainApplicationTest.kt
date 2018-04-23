@@ -16,7 +16,15 @@ class MainApplicationTest {
                 .ring("Apples")
                 .ring("Cherries")
                 .ring("Cherries")
-                .total()).isEqualTo(250 - 20)
+                .total()).isEqualTo(250 - 30)
+    }
+
+    @Test
+    fun `Iteration 3a - Acceptance test with discount`() {
+        assertThat(CheckoutManager()
+                .ring("Cherries")
+                .ring("Cherries")
+                .total()).isEqualTo(75 + 75 - 30)
     }
 
     @Test
