@@ -26,6 +26,9 @@ class CheckoutCalculator(val out: PrintStream) {
         if (products.filter { it == "Cherries" }.count() == 2) {
             total -= 30
         }
+        if (products.filter { it == "Bananas" }.count() == 2) {
+            total -= 150
+        }
         return total
     }
 

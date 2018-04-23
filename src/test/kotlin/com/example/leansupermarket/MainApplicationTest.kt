@@ -28,6 +28,14 @@ class MainApplicationTest {
     }
 
     @Test
+    fun `Iteration 3a - Bananas buy one get one free`() {
+        assertThat(CheckoutManager()
+                .ring("Bananas")
+                .ring("Bananas")
+                .total()).isEqualTo(150 + 150 - 150)
+    }
+
+    @Test
     fun `Iteration 1 - Acceptance test`() {
         assertThat(CheckoutManager()
                 .ring("Apples")
