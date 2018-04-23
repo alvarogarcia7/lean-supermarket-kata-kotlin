@@ -1,4 +1,4 @@
-package com.example.leansupermarket
+package com.example.kata.leansupermarket
 
 class CheckoutCalculator {
     var total = 0

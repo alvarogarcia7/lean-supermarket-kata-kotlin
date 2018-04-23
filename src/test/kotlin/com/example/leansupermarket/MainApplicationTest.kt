@@ -1,5 +1,6 @@
 package com.example.leansupermarket
 
+import com.example.kata.leansupermarket.CheckoutCalculator
 import com.example.kata.leansupermarket.main
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
