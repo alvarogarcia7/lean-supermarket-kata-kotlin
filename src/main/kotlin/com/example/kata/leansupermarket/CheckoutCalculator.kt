@@ -49,7 +49,23 @@ class CheckoutCalculator(val out: PrintStream, vararg val discounts: (Int, List<
                 }
                 return result
             }
-            return CheckoutCalculator(System.out, ::discount1, ::discount2)
+
+            fun discountPommes(total: Int, products: List<String>): Int {
+                var result = total
+                if (products.filter { it == "Pommes" }.count() == 3) {
+                    result -= 100
+                }
+                return result
+            }
+
+            fun discountMele(total: Int, products: List<String>): Int {
+                var result = total
+                if (products.filter { it == "Mele" }.count() == 2) {
+                    result -= 50
+                }
+                return result
+            }
+            return CheckoutCalculator(System.out, ::discount1, ::discount2, ::discountPommes, ::discountMele)
         }
     }
 }

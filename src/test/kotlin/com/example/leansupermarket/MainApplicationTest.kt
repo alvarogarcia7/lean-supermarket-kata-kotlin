@@ -48,7 +48,7 @@ class MainApplicationTest {
     }
 
     @Test
-    fun `Iteration 4 - Support multiple discounts`() {
+    fun `Iteration 5 - Support multiple discounts`() {
         assertThat(CheckoutManager()
                 .ring("Mele").equalTo(100)
                 .ring("Pommes").equalTo(200)
@@ -58,7 +58,7 @@ class MainApplicationTest {
                 .ring("Mele").equalTo(450)
                 .ring("Cherries").equalTo(525)
                 .ring("Cherries").equalTo(580)
-                .total()).isEqualTo(3 * 100)
+                .total()).isEqualTo(580)
     }
 
     @Test
