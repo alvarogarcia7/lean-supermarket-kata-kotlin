@@ -21,3 +21,9 @@ I've dedicated as much time as needed to develop each feature, trying to postpon
 |4| 16m|
 |5| 12m| the CSV work is needed here|
 |6| 14m| iteration not completed |
+
+For the raw information processing, 
+
+```bash
+git log | grep iteration -B2 | grep -v "^$"
+```
